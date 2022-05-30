@@ -10,6 +10,7 @@ fi
 if [ ${INPUT_REMOTE_HOST#"ssh://"} != "$INPUT_REMOTE_HOST" ]; then
     SSH_HOST=${INPUT_REMOTE_HOST#"ssh://"}
     SSH_HOST=${SSH_HOST#*@}
+    SSH_HOST=${SSH_HOST%:*}
 
     if [ -z "$INPUT_SSH_PRIVATE_KEY" ]; then
         echo "Input ssh_private_key is required for SSH hosts!"
